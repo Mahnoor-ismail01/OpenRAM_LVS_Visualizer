@@ -10,11 +10,10 @@ def parse_json_file(file_name):
             pins = item.get('pins', [])
             properties = item.get('properties', [])
 
-            # print out the information
+            
             print("badnets: ", badnets)
             print("badelements: ", badelements)
             print("pins: ", pins)
             print("properties: ", properties)
-            print("\n---\n") # for better visualization
-
+            print("\n---\n") 
 parse_json_file("comp.json")
