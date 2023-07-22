@@ -21,7 +21,7 @@ def compare_circuits(circuit1, circuit2):
                     for pin_info2 in circuit2_net[1]:
                         if len(pin_info1) > 1 and len(pin_info2) > 1 and pin_info1[0] == pin_info2[0]:  # Check each pin
                             found_in_c2 = True
-                            if len(pin_info1) > 2 and len(pin_info2) > 2 and pin_info1[2] != pin_info2[2]:  # Different devices
+                            if len(pin_info1) > 2 and len(pin_info2) > 2 and pin_info1[2] != pin_info2[2]:  
                                 device_diff.append([circuit1_net[0], pin_info2, pin_info1[2]])  # Add circuit2 info and circuit1 device count to the device_diff list
                             break
                 if found_in_c2:
@@ -33,15 +33,15 @@ def compare_circuits(circuit1, circuit2):
     for circuit2_net in circuit2:
         found_in_c1 = False
         for circuit1_net in circuit1:
-            if circuit1_net[0] == circuit2_net[0]:  # Matching net names
+            if circuit1_net[0] == circuit2_net[0]: 
                 found_in_c1 = True
                 for pin_info2 in circuit2_net[1]:
-                    found_in_c1_net = any(len(pin_info1) > 1 and pin_info1[0] == pin_info2[0] and pin_info1[1] == pin_info2[1] for pin_info1 in circuit1_net[1])  # Check each pin and its connections
-                    if not found_in_c1_net:  # If pin_info2 is not in circuit1_net
-                        unknown_nets.append([circuit2_net[0], pin_info2])  # this pin is in circuit2_net but not in the corresponding circuit1_net
+                    found_in_c1_net = any(len(pin_info1) > 1 and pin_info1[0] == pin_info2[0] and pin_info1[1] == pin_info2[1] for pin_info1 in circuit1_net[1])  
+                    if not found_in_c1_net:  
+                        unknown_nets.append([circuit2_net[0], pin_info2])  
                 break
-        if not found_in_c1:  # If circuit2_net is not in circuit1
-            if circuit2_net[0] != "(no matching net)":  # Ignore placeholder net
+        if not found_in_c1:  
+            if circuit2_net[0] != "(no matching net)":  
                 extra_nets.append(circuit2_net)
 
     return missing_nets, extra_nets, unknown_nets, device_diff
