@@ -1,35 +1,4 @@
 import json
-badelements =[
-      [
-        [
-          [
-            "sky130_fd_pr__pfet_01v8:0",
-            [
-              [ "1", 2 ],
-              [ "2", 2 ],
-              [ "4", 2 ]
-            ]
-          ]
-        ], [
-          [
-            "sky130_fd_pr__pfet_01v8:1",
-            [
-              [ "1", 2 ],
-              [ "2", 2 ],
-              [ "4", 1 ]
-            ]
-          ]
-        ]
-      ]
-   ]
-
-
-
-
-
-
-
-
 
 def get_pin_dict(component):
     return {pin[0]: pin[1] for pin in component[1]}
@@ -56,11 +25,11 @@ def compare_circuits(circuit1, circuit2):
                 differences.append(f"Pin '{pin_name}' in component '{comp1[0]}' of first circuit has value {pin_dict1[pin_name]} while in the second circuit's component '{comp2[0]}' it has value {pin_dict2[pin_name]}.")
 
     return differences, no_instance_list
-
-for circuit_pair in badelements:
-    circuit1, circuit2 = circuit_pair
-    differences, no_instance_list = compare_circuits(circuit1, circuit2)
-    for diff in differences:
-        print(diff)
-    for no_instance in no_instance_list:
-        print(f"No matching instance for '{no_instance[0]}'. First circuit info: {no_instance[1]}")
+def main(badelements):
+  for circuit_pair in badelements:
+      circuit1, circuit2 = circuit_pair
+      differences, no_instance_list = compare_circuits(circuit1, circuit2)
+      for diff in differences:
+          print(diff)
+      for no_instance in no_instance_list:
+          print(f"No matching instance for '{no_instance[0]}'. First circuit info: {no_instance[1]}")

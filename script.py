@@ -1,8 +1,22 @@
 import json
+import compare
+import badlement
+
+def keep_duplicates(ordered_pairs):
+    d = {}
+    for k, v in ordered_pairs:
+        if k in d:
+            if type(d[k]) is list:
+                d[k].append(v)
+            else:
+                d[k] = [d[k], v]
+        else:
+            d[k] = v
+    return d
 
 def parse_json_file(file_name):
     with open(file_name, 'r') as json_file:
-        data = json.load(json_file)
+        data = json.load(json_file, object_pairs_hook=keep_duplicates)
 
         all_badnets = []
         all_badelements = []
@@ -15,37 +29,83 @@ def parse_json_file(file_name):
         properties_counter = 0
 
         for item in data:
+            
             if 'badnets' in item:
                 badnets = item['badnets']
-                all_badnets.append(badnets)
-                badnets_counter += 1
+                if type(badnets) is list:
+                    all_badnets.extend(badnets)
+                    badnets_counter += len(badnets)
+                else:
+                    all_badnets.append(badnets)
+                    badnets_counter += 1
 
             if 'badelements' in item:
                 badelements = item['badelements']
-                all_badelements.append(badelements)
-                badelements_counter += 1
+                if type(badelements) is list:
+                    all_badelements.extend(badelements)
+                    badelements_counter += len(badelements)
+                else:
+                    all_badelements.append(badelements)
+                    badelements_counter += 1
 
             if 'pins' in item:
                 pins = item['pins']
-                all_pins.append(pins)
-                pins_counter += 1
+                if type(pins) is list:
+                    all_pins.extend(pins)
+                    pins_counter += len(pins)
+                else:
+                    all_pins.append(pins)
+                    pins_counter += 1
 
             if 'properties' in item:
                 properties = item['properties']
-                all_properties.append(properties)
-                properties_counter += 1
-
-       
+                if type(properties) is list:
+                    all_properties.extend(properties)
+                    properties_counter += len(properties)
+                else:
+                    all_properties.append(properties)
+                    properties_counter += 1
 
         return all_badnets, all_badelements, all_pins, all_properties ,badnets_counter ,badelements_counter, pins_counter ,properties_counter
 
-file_name = "comp_tut6e.json"
-all_badnets, all_badelements, all_pins, all_properties,badnets_counter ,badelements_counter, pins_counter ,properties_counter = parse_json_file(file_name)
-print("Badnets Count: ", all_badnets)
-print("Badelements Count: ", badelements_counter)
-print("Pins Count: ", pins_counter)
-print("Properties Count: ", properties_counter)
-print(len(all_badnets))
-a= open("l.txt","w+")
-a.write(str(all_badnets))
-a.close()
+file_name = "comp1.json"
+all_badnets, all_badelements, all_pins, all_properties, badnets_counter, badelements_counter, pins_counter, properties_counter = parse_json_file(file_name)
+
+
+
+# here, replace 'compare' with the actual name of the comparison module you are using
+
+if len(all_badnets)>0:
+    if badnets_counter != 1:
+        print(all_badnets[1],"yttt")
+        for i in range(len(all_badnets)):
+            if i==0:
+                l=[]
+                a=l.append(all_badnets[0])
+                compare.extract_and_compare_deep_general(l)
+
+            else:
+                compare.extract_and_compare_deep_general(all_badnets[i])
+    else:
+        compare.extract_and_compare_deep_general(all_badnets)
+if len(all_badelements)>0:
+    
+    print(badelements_counter)
+    if badelements_counter != 1:
+        
+        for i in range(len(all_badelements)):
+            if i==0:
+            
+           
+          
+            
+                l=[]
+                a=l.append(all_badelements[i])
+                print(l)
+                badlement.main(l)
+            else:
+                badlement.main(all_badelements[i])
+
+else:
+        badlement.main(all_badelements)
+
