@@ -1,6 +1,6 @@
 import json
 import compare
-import badlement
+import badelement
 
 def keep_duplicates(ordered_pairs):
     d = {}
@@ -72,9 +72,6 @@ file_name = "comp1.json"
 all_badnets, all_badelements, all_pins, all_properties, badnets_counter, badelements_counter, pins_counter, properties_counter = parse_json_file(file_name)
 
 
-
-# here, replace 'compare' with the actual name of the comparison module you are using
-
 if len(all_badnets)>0:
     if badnets_counter != 1:
         print(all_badnets[1],"yttt")
@@ -102,10 +99,10 @@ if len(all_badelements)>0:
                 l=[]
                 a=l.append(all_badelements[i])
                 print(l)
-                badlement.main(l)
+                badelement.main(l)
             else:
-                badlement.main(all_badelements[i])
+                badelement.main(all_badelements[i])
 
 else:
-        badlement.main(all_badelements)
+        badelement.main(all_badelements)
 
