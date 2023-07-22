@@ -10,14 +10,14 @@ def compare_circuits(circuit1, circuit2):
     unknown_nets = []
     device_diff = []
 
-    # Check for missing, device difference
+    
     for circuit1_net in circuit1:
         if circuit1_net[0] == "(no matching net)":
-            continue  # Skip this net, don't consider it missing
+            continue  
         for pin_info1 in circuit1_net[1]:
             found_in_c2 = False
             for circuit2_net in circuit2:
-                if circuit1_net[0] == circuit2_net[0]:  # Matching net names
+                if circuit1_net[0] == circuit2_net[0]:  
                     for pin_info2 in circuit2_net[1]:
                         if len(pin_info1) > 1 and len(pin_info2) > 1 and pin_info1[0] == pin_info2[0]:  # Check each pin
                             found_in_c2 = True
@@ -26,10 +26,10 @@ def compare_circuits(circuit1, circuit2):
                             break
                 if found_in_c2:
                     break
-            if not found_in_c2:  # If pin_info1 is not in any of circuit2_net
-                missing_nets.append([circuit1_net[0], pin_info1])  # this pin is in circuit1_net but not in the corresponding circuit2_net
+            if not found_in_c2:  
+                missing_nets.append([circuit1_net[0], pin_info1])  
 
-    # Check for extra and unknown nets
+    
     for circuit2_net in circuit2:
         found_in_c1 = False
         for circuit1_net in circuit1:
