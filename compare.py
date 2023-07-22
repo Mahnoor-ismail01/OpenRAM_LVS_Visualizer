@@ -19,10 +19,10 @@ def compare_circuits(circuit1, circuit2):
             for circuit2_net in circuit2:
                 if circuit1_net[0] == circuit2_net[0]:  
                     for pin_info2 in circuit2_net[1]:
-                        if len(pin_info1) > 1 and len(pin_info2) > 1 and pin_info1[0] == pin_info2[0]:  # Check each pin
+                        if len(pin_info1) > 1 and len(pin_info2) > 1 and pin_info1[0] == pin_info2[0]:  
                             found_in_c2 = True
                             if len(pin_info1) > 2 and len(pin_info2) > 2 and pin_info1[2] != pin_info2[2]:  
-                                device_diff.append([circuit1_net[0], pin_info2, pin_info1[2]])  # Add circuit2 info and circuit1 device count to the device_diff list
+                                device_diff.append([circuit1_net[0], pin_info2, pin_info1[2]])  
                             break
                 if found_in_c2:
                     break
