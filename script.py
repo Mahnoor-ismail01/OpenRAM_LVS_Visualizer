@@ -74,7 +74,7 @@ all_badnets, all_badelements, all_pins, all_properties, badnets_counter, badelem
 
 if len(all_badnets)>0:
     if badnets_counter != 1:
-        print(all_badnets[1],"yttt")
+        
         for i in range(len(all_badnets)):
             if i==0:
                 l=[]
@@ -85,9 +85,11 @@ if len(all_badnets)>0:
                 compare.extract_and_compare_deep_general(all_badnets[i])
     else:
         compare.extract_and_compare_deep_general(all_badnets)
+
 if len(all_badelements)>0:
     
-    print(badelements_counter)
+    
+    
     if badelements_counter != 1:
         
         for i in range(len(all_badelements)):
@@ -101,8 +103,10 @@ if len(all_badelements)>0:
                 print(l)
                 badelement.main(l)
             else:
+                
                 badelement.main(all_badelements[i])
 
-else:
+    else:
+        
         badelement.main(all_badelements)
 
