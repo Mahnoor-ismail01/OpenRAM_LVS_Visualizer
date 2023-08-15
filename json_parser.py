@@ -8,6 +8,17 @@ devices_dict = {'circuit1': [], 'circuit2': []}
 badnets_dict = {'circuit1': {}, 'circuit2': {}}
 badelements_dict = {'circuit1': {}, 'circuit2': {}}
 
+def insert_with_count_check(dictionary, key, value):
+    if key not in dictionary:
+        dictionary[key] = value
+    else:
+        count = 1
+        new_key = f"{key}_{count}"
+        while new_key in dictionary:
+            count += 1
+            new_key = f"{key}_{count}"
+        dictionary[new_key] = value
+
 # Extracting pins
 for entry in data:
     if "pins" in entry:
@@ -23,8 +34,6 @@ for entry in data:
     if "devices" in entry:
         devices_dict['circuit1'].extend(entry["devices"][0])
         devices_dict['circuit2'].extend(entry["devices"][1])
-
-# ... [previous code remains unchanged]
 
 # Extracting badnets
 for entry in data:
@@ -43,7 +52,7 @@ for entry in data:
                 if circuit1_name not in badnets_dict:
                     badnets_dict[circuit1_name] = {}
 
-                badnets_dict[circuit1_name][net_name] = net_info
+                insert_with_count_check(badnets_dict[circuit1_name], net_name, net_info)
             
             # Parsing circuit 2 info
             for badnet in badnets_data[1]:
@@ -53,10 +62,7 @@ for entry in data:
                 if circuit2_name not in badnets_dict:
                     badnets_dict[circuit2_name] = {}
 
-                badnets_dict[circuit2_name][net_name] = net_info
-
-# ... [rest of the code remains unchanged]
-
+                insert_with_count_check(badnets_dict[circuit2_name], net_name, net_info)
 
 # Extracting badelements
 for entry in data:
@@ -66,7 +72,7 @@ for entry in data:
             for badelement in circuit_badelements:
                 key = badelement[0][0]
                 value = badelement[0][1]
-                badelements_dict[circuit][key] = value
+                insert_with_count_check(badelements_dict[circuit], key, value)
 
 print("Pins:", pins_dict)
 print("\nDevices:", devices_dict)
