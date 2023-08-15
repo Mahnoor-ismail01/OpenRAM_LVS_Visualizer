@@ -1,6 +1,6 @@
 import json
 
-with open('comp.json', 'r') as f:
+with open('comp1.json', 'r') as f:
     data = json.load(f)
 
 pins_dict = {'circuit1': [], 'circuit2': []}
