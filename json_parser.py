@@ -1,4 +1,5 @@
 import json
+import pin_connection
 
 with open('comp1.json', 'r') as f:
     data = json.load(f)
@@ -7,6 +8,36 @@ pins_dict = {'circuit1': [], 'circuit2': []}
 devices_dict = {'circuit1': [], 'circuit2': []}
 badnets_dict = {'circuit1': {}, 'circuit2': {}}
 badelements_dict = {'circuit1': {}, 'circuit2': {}}
+
+def update_badnets_with_pin_connections(pin_connections, badnets_dict):
+    for circuit, badnet_info in badnets_dict.items():
+        circuit_num = int(circuit[-1])
+        
+        # Determine whether we are looking at Schematic or Layout
+        key = 'Schematic' if circuit_num % 2 == 1 else 'Layout'
+        
+        for pin_name, badnet_list in badnet_info.items():
+            
+            if pin_name in pin_connections[key]:
+                
+               
+
+                
+
+                # Append the pin value at the end of the badnet_list
+                badnet_list.append(pin_connections[key][pin_name])
+            if pin_name not in pin_connections[key]:
+                
+               
+
+                
+
+                # Append the pin value at the end of the badnet_list
+                badnet_list.append(0)
+            
+                
+    
+    return badnets_dict
 
 def insert_with_count_check(dictionary, key, value):
     if key not in dictionary:
@@ -73,6 +104,16 @@ for entry in data:
                 key = badelement[0][0]
                 value = badelement[0][1]
                 insert_with_count_check(badelements_dict[circuit], key, value)
+schematic_pin=pin_connection.parse_netlist("sky130_fd_sc_hd__inv_1.spc")
+layout_pin=pin_connection.parse_netlist("sky130_fd_sc_hd__inv_1.spice")
+pin_connection_both={
+    "Schematic": schematic_pin,
+    "Layout": layout_pin
+}
+a=update_badnets_with_pin_connections(pin_connection_both,badnets_dict)
+
+    
+
 
 print("Pins:", pins_dict)
 print("\nDevices:", devices_dict)

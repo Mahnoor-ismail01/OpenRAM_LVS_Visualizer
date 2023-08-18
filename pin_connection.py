@@ -34,10 +34,5 @@ def parse_netlist(filename):
 
 
 
-schematic_connections = parse_netlist("OSC.spc")
-layout_connections = parse_netlist("INV.spice")
 
-print({
-    "Schematic": schematic_connections,
-    "Layout": layout_connections
-})
+
