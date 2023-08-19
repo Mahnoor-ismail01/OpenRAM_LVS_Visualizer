@@ -30,7 +30,7 @@ def process(input_data):
         if isinstance(pin_data_c2[-1], int):
             pin_value_circuit2 = str(pin_data_c2[-1])
         
-        # Handle pins with only one list value
+       
         if len(pin_data_c1) == 1 and isinstance(pin_data_c1[0], list):
             net_name, net_value, _ = pin_data_c1[0]
             nets[net_name] = ["0", net_value]
