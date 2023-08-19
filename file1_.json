@@ -98,69 +98,10 @@
                 ]
             }
         ],
-        "(no matching net)": [
-            "(no matching net)(0)",
-            "0",
-            {
-                "": [
-                    "",
-                    "0",
-                    {
-                        "(no matching net)_1": [
-                            "(no matching net)_1",
-                            "(no matching net)_1",
-                            {
-                                "": [
-                                    "",
-                                    "0"
-                                ]
-                            }
-                        ],
-                        "(no matching net)": [
-                            "(no matching net)",
-                            "(no matching net)",
-                            {
-                                "": [
-                                    "",
-                                    "0"
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ],
         "(no matching net)_1": [
             "(no matching net)_1(0)",
             "0",
-            {
-                "": [
-                    "",
-                    "0",
-                    {
-                        "(no matching net)_1": [
-                            "(no matching net)_1",
-                            "(no matching net)_1",
-                            {
-                                "": [
-                                    "",
-                                    "0"
-                                ]
-                            }
-                        ],
-                        "(no matching net)": [
-                            "(no matching net)",
-                            "(no matching net)",
-                            {
-                                "": [
-                                    "",
-                                    "0"
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
+            {}
         ]
     }
 }

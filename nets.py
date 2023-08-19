@@ -105,7 +105,7 @@ def create_json_from_processed_data(data):
 
     return result
 # Test data
-badnets =  {'circuit1': {'Z': [['sky130_fd_pr__pfet_01v8', '1|3', 1], ['sky130_fd_pr__nfet_01v8', '4', 1],['sky130_fd_pr__nfet_01v8', '1|3', 1], 3], 'A': [['sky130_fd_pr__pfet_01v8', '2', 1], ['sky130_fd_pr__nfet_01v8', '2', 1], 3], '(no matching net)': [['', '', 0]]}, 'circuit2': {'Z': [['sky130_fd_pr__nfet_01v8', '1|3', 1], ['sky130_fd_pr__pfet_01v8', '1|3', 1], 3], 'A': [['sky130_fd_pr__nfet_01v8', '2', 1], ['sky130_fd_pr__pfet_01v8', '2', 1], 3], 'vdd': [['sky130_fd_pr__pfet_01v8', '1|3', 1], ['sky130_fd_pr__pfet_01v8', '4', 1], 3]}, 'circuit3': {'vdd': [['sky130_fd_pr__pfet_01v8', '4', 1], 3], 'extra': [['sky130_fd_pr__pfet_01v8', '1|3', 1]]}, 'circuit4': {'(no matching net)': [['', '', 0]], '(no matching net)_1': [['', '', 0]]}}
+badnets = {'circuit1': {'Z': [['sky130_fd_pr__pfet_01v8', '1|3', 1], ['sky130_fd_pr__nfet_01v8', '1|3', 1], 3], 'A': [['sky130_fd_pr__pfet_01v8', '2', 1], ['sky130_fd_pr__nfet_01v8', '2', 1], 3], 'vdd': [['sky130_fd_pr__pfet_01v8', '1|3', 1], ['sky130_fd_pr__pfet_01v8', '4', 1], 3]}, 'circuit2': {'vdd': [['sky130_fd_pr__nfet_01v8', '1|3', 1], ['sky130_fd_pr__nfet_01v8', '2', 1], ['sky130_fd_pr__pfet_01v8', '1|3', 2], ['sky130_fd_pr__pfet_01v8', '2', 1], ['sky130_fd_pr__pfet_01v8', '4', 1], 7], '(no matching net)': [['', '', 0], 0], '(no matching net)_1': [['', '', 0], 0]}}
 formatted_data = extract_connections(badnets)
 
 a=create_json_from_processed_data(formatted_data)
