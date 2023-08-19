@@ -10,7 +10,7 @@ def create_and_run_sh(mag_file, layer_name, x_coord, y_coord, sh_filename="temp_
         output = subprocess.check_output("jobs -lprs", shell=True).decode('utf-8')
         for line in output.split('\n'):
             print(line)
-            if line.strip():  # If line is not empty
+            if line.strip():  
                 pid = line.strip()  # Assuming the whole line is just the PID
                 os.system(f"kill -9 {pid}")
     except subprocess.CalledProcessError:
