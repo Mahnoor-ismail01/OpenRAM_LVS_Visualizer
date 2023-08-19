@@ -11,7 +11,7 @@ def create_and_run_sh(mag_file, layer_name, x_coord, y_coord, sh_filename="temp_
         for line in output.split('\n'):
             print(line)
             if line.strip():  
-                pid = line.strip()  # Assuming the whole line is just the PID
+                pid = line.strip()  
                 os.system(f"kill -9 {pid}")
     except subprocess.CalledProcessError:
         pass  # This means that no such process was found or there was an error retrieving the PID
