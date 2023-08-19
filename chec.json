@@ -1,6 +1,0 @@
-"Badnets": {'circuit1': {'vdd': [['sky130_fd_pr__pfet_01v8', '1|3', 1],
- ['sky130_fd_pr__pfet_01v8', '4', 1], 3], 'gnd': [['sky130_fd_pr__nfet_01v8', '1|3', 1], 
- ['sky130_fd_pr__nfet_01v8', '4', 1], 3]},
- 'circuit2': {'gnd': [['sky130_fd_pr__nfet_01v8', '1|3', 1],
-  ['sky130_fd_pr__nfet_01v8', '4', 1], ['sky130_fd_pr__pfet_01v8', '1|3', 1],
-   ['sky130_fd_pr__pfet_01v8', '4', 1], 3], '(no matching net)': [['', '', 0]]}}
