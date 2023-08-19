@@ -5,7 +5,7 @@ import time
 def create_and_run_sh(mag_file, layer_name, x_coord, y_coord, sh_filename="temp_script.sh"):
     
 
-    # Kill any previous instances of the magic command using jobs and kill
+   
     try:
         output = subprocess.check_output("jobs -lprs", shell=True).decode('utf-8')
         for line in output.split('\n'):
