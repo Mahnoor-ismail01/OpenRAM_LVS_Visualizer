@@ -1,43 +1,20 @@
 import json
 
-def extract_and_count_connections(filename):
-    # Read the JSON data from the file
-    with open(filename, 'r') as f:
-        data = json.load(f)
+# Load the JSON files
+with open("output_pins.json", "r") as f1, open("output.json", "r") as f2:
+    json1 = json.load(f1)
+    json2 = json.load(f2)
 
-    # Prepare the divisions
-    schematic_counts = {}
-    layout_counts = {}
+# Iterate through keys in json1 and lookup in json2
+for values in json1["pins"].values():
+    if isinstance(values[-1], dict):
+        keys = list(values[-1].keys())
+        for key in keys:
+            if key in json2["device"]:
+                values[-1][key] = json2["device"][key]
 
-    # Iterate through the data
-    for item in data:
-        if "badnets" in item:
-            is_schematic = True  # We start with the assumption that the first list is schematic
+# Save the updated json1
+with open("file1_updated.json", "w") as f:
+    json.dump(json1, f, indent=4)
 
-            for badnet_set in item["badnets"]:
-                if is_schematic:
-                    target = schematic_counts
-                else:
-                    target = layout_counts
-
-                # Count connections for each pin
-                for badnet_group in badnet_set:
-                    for badnet in badnet_group:
-                        pin_name = badnet[0]
-                        count = sum([x[2] for x in badnet[1]])
-                        
-                        if pin_name in target:
-                            target[pin_name] += count
-                        else:
-                            target[pin_name] = count
-                
-                # Alternate between schematic and layout
-                is_schematic = not is_schematic
-
-    return schematic_counts, layout_counts
-
-filename = 'comp1.json'
-schematic_counts, layout_counts = extract_and_count_connections(filename)
-
-print("Schematic Counts:", schematic_counts)
-print("Layout Counts:", layout_counts)
+print("Updated file1 based on values from file2.")
