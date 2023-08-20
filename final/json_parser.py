@@ -6,6 +6,7 @@ import merge_pins_and_device
 import clean
 import nets
 import combine
+import pi
 
 with open('comp1.json', 'r') as f:
     data = json.load(f)
@@ -133,8 +134,11 @@ cleann_device=clean.main("output_device.json","output_device.json")
 #nets
 netss=nets.net_json("final_pins_output.json")
 
+#pinsssslast
+con=pi.create_pin_connections(pins_dict)
+
 #create final json that include pins,nets, and devices.
-final_json=combine.inputs("final_pins_output.json","output_nets.json","output_device.json")
+final_json=combine.inputs("final_pins_output.json","output_nets.json","output_device.json","outpi.json")
  
 
     
@@ -144,3 +148,5 @@ print("Pins:", pins_dict)
 print("\nDevices:", devices_dict)
 print("\nBadnets:", badnets_dict)
 print("\nBadelements:", badelements_dict)
+
+ 

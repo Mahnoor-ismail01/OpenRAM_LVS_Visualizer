@@ -94,9 +94,4 @@ def generate_json_output(processed_data):
         json.dump(output, outfile, indent=4)
 
 
-if __name__ == "__main__":
-    data =  {'circuit1': {'Z': [['sky130_fd_pr__pfet_01v8', '1|3', 1], ['sky130_fd_pr__nfet_01v8', '1|3', 1], 3], 'A': [['sky130_fd_pr__pfet_01v8', '2', 1], ['sky130_fd_pr__nfet_01v8', '2', 1], 3], 'vdd': [['sky130_fd_pr__pfet_01v8', '1|3', 1], ['sky130_fd_pr__pfet_01v8', '4', 1], 3]}, 'circuit2': {'vdd': [['sky130_fd_pr__nfet_01v8', '1|3', 1], ['sky130_fd_pr__nfet_01v8', '2', 1], ['sky130_fd_pr__pfet_01v8', '1|3', 2], ['sky130_fd_pr__pfet_01v8', '2', 1], ['sky130_fd_pr__pfet_01v8', '4', 1], 7], '(no matching net)': [['', '', 0], 0], '(no matching net)_1': [['', '', 0], 0]}}
-    circuit1_data, circuit2_data = aggregate_data(data)
-    data = {'circuit1': circuit1_data, 'circuit2': circuit2_data}  # Overwrite original data for processing
-    processed_data = process(data)
-    generate_json_output(processed_data)
+
