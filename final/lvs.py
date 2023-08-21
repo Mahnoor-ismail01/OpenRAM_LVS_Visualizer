@@ -10,7 +10,7 @@
 
 import json, os
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QFileDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QFileDialog,QMessageBox,QDesktopWidget
 
 from json_parser import json_parser
 from search_extfile_coordinates import magic
@@ -377,24 +377,47 @@ class MainApp(QMainWindow):
         # Assuming only 2 depths are there (device and pins)
         if item.data(0, QtCore.Qt.UserRole) == "pin_data":
             if item.parent().parent() is None:
-                magic(self.ext_file ,self.magic_file, item.text(0), "pin")
+                a1=magic(self.ext_file ,self.magic_file, f'"{item.text(0)}"', "pin")
+                if a1!="":
+                    self.displayalert(a1)
                 print(f"'{item.text(0)}' is a pin.")
             elif item.parent().parent().parent() is None:
-                magic(self.ext_file ,self.magic_file, item.text(0), "device")
+                a1=magic(self.ext_file ,self.magic_file, item.text(0), "device")
+                if a1!="":
+                    self.displayalert(a1)
                 print(f"'{item.text(0)}' is a device.")
             else:
-                magic(self.ext_file ,self.magic_file, item.text(0), "pin")
+                a1=magic(self.ext_file ,self.magic_file, f'"{item.text(0)}"', "pin")
+                if a1!="":
+                    self.displayalert(a1)
                 print(f"'{item.text(0)}' is a pin.")
         elif item.data(0, QtCore.Qt.UserRole) == "dev_data":
             if item.parent() is None or item.parent().parent() is None:
-                magic(self.ext_file ,self.magic_file, item.text(0), "device")
+                a1=magic(self.ext_file ,self.magic_file, item.text(0), "device")
+                if a1!="":
+                    self.displayalert(a1)
                 print(f"'{item.text(0)}' is a device.")
             else:
-                magic(self.ext_file ,self.magic_file, item.text(0), "pin")
+                a1=magic(self.ext_file ,self.magic_file,f'"{item.text(0)}"', "pin")
+                if a1!="":
+                    self.displayalert(a1)
                 print(f"'{item.text(0)}' is a pin.")
         elif item.data(0, QtCore.Qt.UserRole) == "pin_connection":
-            magic(self.ext_file ,self.magic_file, f'"{item.text(1)}"', "pin")
+            a1=magic(self.ext_file ,self.magic_file, f'"{item.text(1)}"', "pin")
+            if a1!="":
+                    self.displayalert(a1)
             print(f"{item.text(1)} is a pin.")
+    def displayalert(self,message):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)  # You can set this to be Warning, Critical, Information, etc.
+        msg.setText(message)
+        msg.setWindowTitle("Alert")
+        qtRectangle = msg.frameGeometry()
+        centerPoint = QDesktopWidget().availableGeometry().center()
+        qtRectangle.moveCenter(centerPoint)
+        msg.move(qtRectangle.topLeft())
+        msg.exec_()
+
 
     def START_PROCESSING(self):
         json_parser(self.schematic_netlist, self.layout_netlist, self.json_file)

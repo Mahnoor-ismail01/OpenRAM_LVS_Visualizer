@@ -27,20 +27,24 @@ def magic(filename,mag_file,keyword,search_type):
     
     if coordinates :
         print(coordinates[0],coordinates[1])
-        with open(mag_file, 'r') as file:
-            mag_content = file.read()
-        result=search_lable_magfile.find_label_for_rect(mag_content,coordinates[0],coordinates[1],search_type)
+        
+        result=search_lable_magfile.find_label_for_rect(mag_file,coordinates[0],coordinates[1],search_type)
         
         if result:
             print(f"The label for the given label is: {result}")
             mag=magic_command.create_and_run_sh(mag_file,result,coordinates[0],coordinates[1])
+            return("")
 
 
         else:
             print("Could not find a matching label.")
+            return("Could not find a matching label.")
 
     else:
         print("Coordinates not found!")
+        return("Coordinates not found!")
+    return("")
+    
 
 
     

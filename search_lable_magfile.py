@@ -1,34 +1,34 @@
-def find_label_for_rect(mag_content, x, y,search_type):
-    # Split the content into lines
-    lines = mag_content.split("\n")
-    
-
-    # Start from the end of the file and find the rect which matches
-    for i in reversed(range(len(lines))):
-        line = lines[i].strip()
+def find_label_for_rect(filename, x, y, entity_type):
+    #def extract_label_from_magic_file(filename, x, y, entity_type):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
         
+    label = None
 
-        # If we find a rect line, check the coordinates
-        if line.startswith("rect"):
-            rect_coords = list(map(int, line.split()[1:5]))
-            if rect_coords[0] <= x <= rect_coords[2] and rect_coords[1] <= y <= rect_coords[3]:
-                # If the coordinates are within the rect, find the previous label (header)
-                for j in reversed(range(i)):
-                    if lines[j].startswith("<<") and lines[j].endswith(">>"):
-                        return lines[j][2:-2].strip()  # Remove << >> and return label
-                break
+    # We use enumerate to loop with both index and the line itself
+    for idx, line in enumerate(lines):
+        # Clean up the line
+        line = line.strip()
 
-    # If we reached here, we did not find the label
-    return None
+        # Check for coordinates in the current line for the pin type
+        if entity_type == "pin" and f"rlabel" in line and f"{x} {y}" in line:
+            parts = line.split()
+            label = parts[1]  # the label after rlabel keyword (like "metal1")
+            return label
 
-# Prompt the user for the input file name
+        # Handle device extraction
+        elif entity_type == "device" and f"rect {x} {y}" in line:
+            for prev_line in lines[:idx][::-1]:  # search upwards from the current line
+                if "<<" in prev_line and ">>" in prev_line:
+                    label = prev_line.split(" ")[1]  # Assuming format is always << label >>
+                    return label
 
+    return label
 
-# Read the content from the provided file
+# Extract label
+result_label = find_label_for_rect("/home/mahnoor/Downloads/INV(changebothother2)/INV.mag", 20, 142, "device")
 
-    
-
-# Prompt the user for coordinates
-
-
-
+if result_label:
+    print(f"Extracted Label: {result_label}")
+else:
+    print("Label not found!")

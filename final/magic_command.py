@@ -32,10 +32,10 @@ EOF
         f.write(content)
     
     # Provide execution permissions
-    subprocess.run(["chmod", "+x", sh_filename])
+    subprocess.Popen(["chmod", "+x", sh_filename])
 
     # Run the magic command using the bash script
-    subprocess.run(["./" + sh_filename])
+    subprocess.Popen(["./" + sh_filename])
 
 
 
