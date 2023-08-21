@@ -1,7 +1,7 @@
 #!/bin/bash
 
 magic -noconsole << EOF
-load /home/mahnoor/Downloads/INV(changebothother2)/INV.mag
+load /home/mahnoor/Downloads/mismatch_examples/extra_layout/INV.mag
 select
-select nmos at 47 40
+select metal1 at 10 12
 EOF

@@ -1,7 +1,12 @@
 import search_lable_magfile
 import magic_command
+import os
 def magic(filename,mag_file,keyword,search_type):
+    
+
+    
     def extract_coordinates(filename, keyword, search_type):
+        
         with open(filename, 'r') as f:
             for line in f:
                 
@@ -20,6 +25,7 @@ def magic(filename,mag_file,keyword,search_type):
                     except (ValueError, IndexError):
                         continue
         return None
+    
 
     
     coordinates = extract_coordinates(filename, keyword, search_type)
@@ -44,7 +50,8 @@ def magic(filename,mag_file,keyword,search_type):
         print("Coordinates not found!")
         return("Coordinates not found!")
     return("")
-    
 
 
-    
+
+
+

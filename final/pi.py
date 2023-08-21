@@ -9,15 +9,8 @@ def create_pin_connections(data):
     
     return {"pin_connections": pin_connections}
 
-data = {
-    'circuit1': ['Z', 'A', 'gnd', 'vdd_schematic'],
-    'circuit2': ['Z', 'A', 'gnd', 'vdd']
-}
 
-connections = create_pin_connections(data)
+
 
 # Saving to output.json
-with open("outpi.json", "w") as f:
-    json.dump(connections, f, indent=4)
 
-print("Data saved to output.json.")

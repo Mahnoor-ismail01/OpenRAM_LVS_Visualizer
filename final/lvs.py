@@ -354,7 +354,7 @@ class MainApp(QMainWindow):
         return item
 
     def json_bana_di(self, jsonfile):
-
+        self.ui.treeWidget.clear()
         f = open(jsonfile)
         d = json.load(f)
         f.close()
@@ -420,8 +420,11 @@ class MainApp(QMainWindow):
 
 
     def START_PROCESSING(self):
-        json_parser(self.schematic_netlist, self.layout_netlist, self.json_file)
-        self.json_bana_di("combined.json")
+        a2=json_parser(self.schematic_netlist, self.layout_netlist, self.json_file)
+        if a2!="":
+            self.displayalert(a2)
+        else:
+            self.json_bana_di("combined.json")
     
     
     def browse_connect(self):

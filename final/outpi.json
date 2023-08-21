@@ -1,20 +1,8 @@
 {
     "pin_connections": {
         "pin_1": [
-            "Z",
-            "Z"
-        ],
-        "pin_2": [
-            "A",
-            "A"
-        ],
-        "pin_3": [
-            "gnd",
-            "gnd"
-        ],
-        "pin_4": [
             "vdd",
-            "vdd_schematic"
+            "Z"
         ]
     }
 }

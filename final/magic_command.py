@@ -7,15 +7,7 @@ def create_and_run_sh(mag_file, layer_name, x_coord, y_coord, sh_filename="temp_
     
 
    
-    try:
-        output = subprocess.check_output("jobs -lprs", shell=True).decode('utf-8')
-        for line in output.split('\n'):
-            print(line)
-            if line.strip():  
-                pid = line.strip()  
-                os.system(f"kill -9 {pid}")
-    except subprocess.CalledProcessError:
-        pass  
+     
 
     # Bash script content
     content = f"""#!/bin/bash
