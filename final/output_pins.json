@@ -1,3 +1,66 @@
 {
-    "pins": {}
+    "pins": {
+        "vdd": [
+            "vdd(7)",
+            "vdd(3)",
+            {
+                "sky130_fd_pr__nfet_01v8": [
+                    "sky130_fd_pr__nfet_01v8",
+                    "0"
+                ],
+                "sky130_fd_pr__pfet_01v8": [
+                    "sky130_fd_pr__pfet_01v8",
+                    "sky130_fd_pr__pfet_01v8"
+                ]
+            }
+        ],
+        "0": [
+            "0",
+            "Z(3)",
+            {
+                "0": [
+                    "0",
+                    "sky130_fd_pr__nfet_01v8"
+                ],
+                "1": [
+                    "0",
+                    "sky130_fd_pr__pfet_01v8"
+                ]
+            }
+        ],
+        "1": [
+            "0",
+            "A(3)",
+            {
+                "0": [
+                    "0",
+                    "sky130_fd_pr__nfet_01v8"
+                ],
+                "1": [
+                    "0",
+                    "sky130_fd_pr__pfet_01v8"
+                ]
+            }
+        ],
+        "(no matching net)": [
+            "(no matching net)(0)",
+            "0",
+            {
+                "": [
+                    "",
+                    "0"
+                ]
+            }
+        ],
+        "(no matching net)_1": [
+            "(no matching net)_1(0)",
+            "0",
+            {
+                "": [
+                    "",
+                    "0"
+                ]
+            }
+        ]
+    }
 }

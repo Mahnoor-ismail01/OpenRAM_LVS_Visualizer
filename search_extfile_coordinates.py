@@ -24,7 +24,7 @@ filename = "INV.ext"
 
 # Taking user input for keyword and search type
 keyword ='"A"'
-search_type = "device"
+search_type = "pin"
 coordinates = extract_coordinates(filename, keyword, search_type)
 mag_file="INV.mag"
 if coordinates :
