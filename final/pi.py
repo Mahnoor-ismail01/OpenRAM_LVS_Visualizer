@@ -12,5 +12,3 @@ def create_pin_connections(data):
 
 
 
-# Saving to output.json
-

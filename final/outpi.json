@@ -1,8 +1,36 @@
 {
     "pin_connections": {
         "pin_1": [
-            "vdd",
-            "Z"
+            "",
+            ""
+        ],
+        "pin_2": [
+            "",
+            ""
+        ],
+        "pin_3": [
+            "A",
+            "Y"
+        ],
+        "pin_4": [
+            "Y",
+            "A"
+        ],
+        "pin_5": [
+            "VPB",
+            "VPB"
+        ],
+        "pin_6": [
+            "VPWR",
+            "VPWR"
+        ],
+        "pin_7": [
+            "VNB",
+            "VNB"
+        ],
+        "pin_8": [
+            "VGND",
+            "VGND"
         ]
     }
 }
