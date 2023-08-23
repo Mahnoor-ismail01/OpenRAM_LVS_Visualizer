@@ -10,7 +10,7 @@ This Project was created as part of Google Summer of Code 2023 Programme for Ope
 
 | Organization | University of California - Open Source Program Office (UC-OSPO) |
 |--------------|-----------:|
-| Mentor | Jesse Cirimelli-Low and Matthew Guthaus |
+| Mentors | Jesse Cirimelli-Low and Matthew Guthaus |
 | Contributor | Mahnoor Ismail |
 
 
