@@ -11,6 +11,7 @@
 import json, os
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QFileDialog,QMessageBox,QDesktopWidget
+from PyQt5.QtCore import QFile
 
 from json_parser import json_parser
 from search_extfile_coordinates import magic
@@ -285,12 +286,43 @@ class Ui_MainWindow(object):
 
 class MainApp(QMainWindow):
 
-    def __init__(self, parent=None):
+    def __init__(self,args, parent=None):
         super(MainApp, self).__init__(parent)
 
         # Set up the user interface from Design
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        f1,f2,f3,f4,f5 = [False for i in range(5)]
+
+        if args.ext_file:
+            self.ext_file = args.ext_file
+            self.ui.pushButton_5.setText(os.path.basename(args.ext_file))
+            f1 = True
+
+        if args.magic_file:
+            self.magic_file = args.magic_file
+            self.ui.pushButton_4.setText(os.path.basename(args.magic_file))
+            f2 = True
+
+        if args.json_output:
+            self.json_file = args.json_output
+            self.ui.pushButton_3.setText(os.path.basename(args.json_output))
+            f3 = True
+
+        if args.layout_netlist:
+            self.layout_netlist = args.layout_netlist
+            self.ui.pushButton_2.setText(os.path.basename(args.layout_netlist))
+            f4 = True
+
+        if args.schematic_netlist:
+            self.schematic_netlist = args.schematic_netlist
+            self.ui.pushButton.setText(os.path.basename(args.schematic_netlist))
+            f5 = True
+
+        
+        
+
 
         # self.ui.pushButton.clicked.connect(self.browseFile)
         self.browse_connect()
@@ -309,7 +341,30 @@ class MainApp(QMainWindow):
         # ... Add more colors if needed ...
         ]
 
+        if f1 and f2 and f3 and f4 and f5 is True:
+            self.START_PROCESSING()
 
+
+    def closeEvent(self, event):
+        # Ask the user for confirmation before closing
+        reply = QMessageBox.question(self, 'Confirmation',
+                                     "Are you sure you want to close? All temp files will be deleted.",
+                                     QMessageBox.Yes | QMessageBox.No,
+                                     QMessageBox.No)
+
+        if reply == QMessageBox.Yes:
+            self.delete_temp_files()
+            event.accept()
+        else:
+            event.ignore()
+
+    def delete_temp_files(self):
+        # Assuming you have a list of file paths to delete
+        files_to_delete = ["output_pins.json", "output_nets.json","output_device.json","outpi.json","final_pins_output.json","combined.json","temp_script.sh"]
+        for file_path in files_to_delete:
+            if QFile.exists(file_path):
+                QFile.remove(file_path)
+    
     def recursive_parse(self, mark , d, parent_item=None):
         for key, value in d.items():
             current_item = self.funcKey(mark, key, parent_item)
@@ -477,12 +532,22 @@ class MainApp(QMainWindow):
 
 
 if __name__ == "__main__":
-    import sys
+    import sys, argparse
+    parser = argparse.ArgumentParser(description='Process some netlists and files.')
+
+    # Adding both short and long versions for each argument
+    parser.add_argument('-s', '--schematic_netlist', help='Path to schematic netlist', default=None)
+    parser.add_argument('-l', '--layout_netlist', help='Path to layout netlist', default=None)
+    parser.add_argument('-j', '--json_output', help='Path to JSON output file', default=None)
+    parser.add_argument('-m', '--magic_file', help='Path to magic file', default=None)
+    parser.add_argument('-e', '--ext_file', help='Path to EXT file', default=None)
+
+    args = parser.parse_args()
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
 #     ui = Ui_MainWindow()
     # JSONFILE = "combined.json"
-    window = MainApp()
+    window = MainApp(args=args)
 #     window.show()
     window.showMaximized()
 #     ui.setupUi(MainWindow, JSONFILE)
