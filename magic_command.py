@@ -7,7 +7,7 @@ def create_and_run_sh(mag_file, layer_name, x_coord, y_coord, sh_filename="temp_
     
 
    
-     
+    
 
     # Bash script content
     content = f"""#!/bin/bash
