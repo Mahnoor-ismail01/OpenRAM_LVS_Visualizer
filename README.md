@@ -2,7 +2,7 @@
 
 OpenRAM Layout Vs Schematic Netlist Visualizer Desktop Application.
 
-Developed by <b>Mahnoor Ismail</b> 
+Developed by <b>Mahnoor Ismail</b> with ❤️
 
 This is developed purely in Python Programming Language. GUI is supported by PyQt5 Framework.
 
