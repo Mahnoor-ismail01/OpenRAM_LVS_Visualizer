@@ -435,33 +435,33 @@ class MainApp(QMainWindow):
                 a1=magic(self.ext_file ,self.magic_file, f'"{item.text(0)}"', "pin")
                 if a1!="":
                     self.displayalert(a1)
-                print(f"'{item.text(0)}' is a pin.")
+                
             elif item.parent().parent().parent() is None:
                 a1=magic(self.ext_file ,self.magic_file, item.text(0), "device")
                 if a1!="":
                     self.displayalert(a1)
-                print(f"'{item.text(0)}' is a device.")
+                
             else:
                 a1=magic(self.ext_file ,self.magic_file, f'"{item.text(0)}"', "pin")
                 if a1!="":
                     self.displayalert(a1)
-                print(f"'{item.text(0)}' is a pin.")
+                
         elif item.data(0, QtCore.Qt.UserRole) == "dev_data":
             if item.parent() is None or item.parent().parent() is None:
                 a1=magic(self.ext_file ,self.magic_file, item.text(0), "device")
                 if a1!="":
                     self.displayalert(a1)
-                print(f"'{item.text(0)}' is a device.")
+                
             else:
                 a1=magic(self.ext_file ,self.magic_file,f'"{item.text(0)}"', "pin")
                 if a1!="":
                     self.displayalert(a1)
-                print(f"'{item.text(0)}' is a pin.")
+                
         elif item.data(0, QtCore.Qt.UserRole) == "pin_connection":
             a1=magic(self.ext_file ,self.magic_file, f'"{item.text(1)}"', "pin")
             if a1!="":
                     self.displayalert(a1)
-            print(f"{item.text(1)} is a pin.")
+            
     def displayalert(self,message):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Warning)  # You can set this to be Warning, Critical, Information, etc.
@@ -493,7 +493,7 @@ class MainApp(QMainWindow):
         options = QFileDialog.Options()
         filePath, _ = QFileDialog.getOpenFileName(self, "Browse File", "", "All Files (*)", options=options)
         if filePath:
-            print(filePath)
+            
             self.schematic_netlist = filePath
             self.ui.pushButton.setText(os.path.basename(filePath))
 
@@ -502,7 +502,7 @@ class MainApp(QMainWindow):
         options = QFileDialog.Options()
         filePath, _ = QFileDialog.getOpenFileName(self, "Browse File", "", "All Files (*)", options=options)
         if filePath:
-            print(filePath)
+            
             self.layout_netlist = filePath
             self.ui.pushButton_2.setText(os.path.basename(filePath))
 
@@ -510,7 +510,7 @@ class MainApp(QMainWindow):
         options = QFileDialog.Options()
         filePath, _ = QFileDialog.getOpenFileName(self, "Browse File", "", "All Files (*)", options=options)
         if filePath:
-            print(filePath)
+            
             self.json_file = filePath
             self.ui.pushButton_3.setText(os.path.basename(filePath))
 
@@ -518,7 +518,7 @@ class MainApp(QMainWindow):
         options = QFileDialog.Options()
         filePath, _ = QFileDialog.getOpenFileName(self, "Browse File", "", "All Files (*)", options=options)
         if filePath:
-            print(filePath)
+            
             self.magic_file = filePath
             self.ui.pushButton_4.setText(os.path.basename(filePath))
 
@@ -526,7 +526,7 @@ class MainApp(QMainWindow):
         options = QFileDialog.Options()
         filePath, _ = QFileDialog.getOpenFileName(self, "Browse File", "", "All Files (*)", options=options)
         if filePath:
-            print(filePath)
+            
             self.ext_file = filePath
             self.ui.pushButton_5.setText(os.path.basename(filePath))
 

@@ -29,25 +29,25 @@ def magic(filename,mag_file,keyword,search_type):
 
     
     coordinates = extract_coordinates(filename, keyword, search_type)
-    print(coordinates)
+    
     
     if coordinates :
-        print(coordinates[0],coordinates[1])
+        
         
         result=search_lable_magfile.find_label_for_rect(mag_file,coordinates[0],coordinates[1],search_type)
         
         if result:
-            print(f"The label for the given label is: {result}")
+            
             mag=magic_command.create_and_run_sh(mag_file,result,coordinates[0],coordinates[1])
             return("")
 
 
         else:
-            print("Could not find a matching label.")
+            
             return("Could not find a matching label.")
 
     else:
-        print("Coordinates not found!")
+        
         return("Coordinates not found!")
     return("")
 

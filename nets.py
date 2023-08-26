@@ -14,4 +14,3 @@ def net_json(inputfile):
     with open("output_nets.json", "w") as outfile:
         json.dump(data, outfile, indent=4)
 
-    print("Modification complete. Check output.json for the result.")

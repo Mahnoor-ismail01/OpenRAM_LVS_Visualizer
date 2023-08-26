@@ -3,7 +3,7 @@ import subprocess
 import time
 
 def create_and_run_sh(mag_file, layer_name, x_coord, y_coord, sh_filename="temp_script.sh"):
-    print(mag_file, layer_name, x_coord, y_coord)
+    
     
 
    

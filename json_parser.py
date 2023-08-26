@@ -152,10 +152,7 @@ def json_parser(schematic_input,layout_input,jsonfile):
             
 
 
-        print("Pins:", pins_dict)
-        print("\nDevices:", devices_dict)
-        print("\nBadnets:", badnets_dict)
-        print("\nBadelements:", badelements_dict)
+       
         return("")
 
     else:

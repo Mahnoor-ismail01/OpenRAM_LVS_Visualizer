@@ -17,5 +17,5 @@ def merge_pins(pins_file,device_file):
     with open("final_pins_output.json", "w") as f:
         json.dump(json1, f, indent=4)
 
-    print("Updated file1 based on values from file2.")
+    
 

@@ -24,4 +24,3 @@ def inputs(pins,nets,devices,pin_connection):
     with open("combined.json", "w") as outfile:
         json.dump(combined_data, outfile, indent=4)
 
-    print("Data combined. Check combined.json for the result.")
