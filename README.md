@@ -2,7 +2,7 @@
 
 
 
-<center><a href="https://summerofcode.withgoogle.com/programs/2022/projects/lR1cWrnn"><img src="https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-logo-horizontal.svg" alt="gsoc" height="50" width="400"/><img src="image/ospo.png" height ="50"/> </a></center> 
+<center><a href="https://summerofcode.withgoogle.com/programs/2022/projects/lR1cWrnn"><img src="https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-logo-horizontal.svg" alt="gsoc" height="50" width="400"/><img src="image/ospo.png" height ="50" widht="400"/> </a></center> 
 
 
 # OpenRAM LVS Visualizer
@@ -20,6 +20,8 @@ This Project was created as part of Google Summer of Code 2023 Programme for Ope
 | Mentors | Jesse Cirimelli-Low and Matthew Guthaus |
 | Contributor | Mahnoor Ismail |
 
+## Short Description
+The "LVS Visualizer" is a tool designed to aid in the comparison of schematic and layout netlists in circuit design. With its intuitive graphical interface, users can effortlessly spot discrepancies between a circuit's layout and its schematic. A standout feature is its interactive capability: clicking on a net, device, or pin immediately highlights it in the layout in magic, allowing users to swiftly locate and address any mismatches. This application streamlines the process of analyzing and correcting circuit layout issues, ensuring fidelity to the original schematics.
 
 ### How to Run
 
