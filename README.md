@@ -2,7 +2,7 @@
 
 
 
-<center><a href="https://summerofcode.withgoogle.com/programs/2022/projects/lR1cWrnn"><img src="https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-logo-horizontal.svg" alt="gsoc" height="50" width="400"/><img src="image/ospo.png" height ="50" widht="400"/> </a></center> 
+<center><a href=""><img src="https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-logo-horizontal.svg" alt="gsoc" height="50" width="400"/><img src="image/ospo.png" height ="50" widht="400"/> </a></center> 
 
 
 # OpenRAM LVS Visualizer
