@@ -28,7 +28,7 @@ def parse_netlist(filename):
             for port in ports:
                 # Initialize count for each port, counting its occurrence in the .subckt line as a connection
                 if port not in connection_counts:
-                    connection_counts[port] = 1
+                    connection_counts[port] = 0
 
     return connection_counts
 
